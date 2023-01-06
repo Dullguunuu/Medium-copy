@@ -1,0 +1,68 @@
+.navDiv {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 25px 0;
+  background-color: #FFC017;
+  margin: 0 auto;
+}
+
+.navUl {
+  display: flex;
+  gap: 25px;
+  align-items: baseline;
+  margin: 0;
+}
+
+.navList {
+  list-style: none;
+}
+
+.navList:last-child {
+  background: black;
+  padding: 10px 17px;
+  color: #FFC017;
+  border-radius: 22px
+}
+
+/* Main section starts here */
+
+.styleMain {
+  display: flex;
+  gap: 217px;
+  padding-top: 75px;
+  background-color: #FFC017;
+  margin: 0 auto;
+}
+
+#title {
+  margin-top: 75px;
+  font-weight: 400;
+  height: 123px;
+  font-size: 90px;
+}
+
+#subTitle {
+  font-size: 24px;
+  width: 425px;
+  margin-bottom: 50px;
+}
+
+.styleMain button {
+  border: none;
+  background: black;
+  color: white;
+  padding: 8px 45px;
+  border-radius: 20px;
+}
+
+#right {
+  position: absolute;
+  right: 0;
+}
+
+.trendingNum {
+  color: #E6E6E6;
+  font-weight: 700;
+  font-size: 30px;
+}
