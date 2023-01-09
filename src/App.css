@@ -61,8 +61,62 @@
   right: 0;
 }
 
+.sectionContainers {
+  width: 1224px;
+  margin: 40px auto;
+}
+
+.trendingContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.trendingGeneral {
+  display: flex;
+  align-items: baseline;
+  gap: 20px;
+  width: 376px;
+}
+
 .trendingNum {
   color: #E6E6E6;
   font-weight: 700;
   font-size: 30px;
+}
+
+.posted {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.postedBy {
+  font-weight: 500;
+  font-size: 12px;
+}
+
+.text2Title {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.dateAndMins {
+  color: #757575;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.notTrendingNews {
+  width: 695px;
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+  margin-bottom: 48px;
+}
+
+.keywords {
+  background-color: #F2F2F2;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin: 0 5px;
 }
