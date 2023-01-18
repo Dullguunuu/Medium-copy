@@ -3,6 +3,10 @@ import Navbar from './components/navbar';
 import MainSection from './components/mainSection';
 import Trending from './components/trending';
 import Posts from './components/posts';
+import { useState } from 'react';
+import { Route, Routes } from "react-router-dom"
+import Login from './components/subComponents/logIn';
+import Admin from './components/subComponents/admin';
 
 const navbar = ["Our story", "Membership", "Write", "Sign in", "Get started"];
 const trendingNews = [
@@ -39,7 +43,7 @@ const trendingNews = [
     text2: "9 Python Built-In Decorators That Optimize Your Code Significantly",
     date: "Jan 1, 2022",
     read: "7 min read",
-    con: require("../src/images/star.png")
+    con: require("../src/images/star.png"),
   },
   {
     id: '05',
@@ -201,12 +205,25 @@ const posts = [
 ]
 
 function App() {
+
+  const [admin, setAdmin] = useState(false)
   return (
     <div>
-      <Navbar navbar={navbar} />
-      <MainSection />
-      <Trending trending={trendingNews} />
-      <Posts posts={posts} />
+      {!admin ? (
+        <div>
+          < Navbar navbar={navbar} setAdmin={setAdmin} />
+          <MainSection />
+          <Trending trending={trendingNews} />
+          <Posts posts={posts} />}
+        </div>
+      ) : (
+        <div>
+          <Routes>
+            <Route exact path="/login" element={<Login />} />
+            <Route path="/admin" element={<Admin />} />
+          </Routes>
+        </div>
+      )}
     </div>
   );
 }

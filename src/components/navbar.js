@@ -1,5 +1,9 @@
-export default function Navbar({ navbar }) {
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"
+
+export default function Navbar({ navbar, setAdmin }) {
     console.log(navbar)
+    const navigate = useNavigate();
     return (
         <div style={{ background: "#FFC017" }} >
             <div className="navDiv" style={{ width: 1192 }}>
@@ -11,7 +15,16 @@ export default function Navbar({ navbar }) {
                         ))
                     }
                 </ul>
+                <span
+                    onClick={() => {
+                        setAdmin(true);
+                        navigate("/login");
+                    }}
+                >
+                    Go to admin login
+                </span>
             </div>
-        </div>
+            <hr className="m-0"></hr>
+        </div >
     )
 }
