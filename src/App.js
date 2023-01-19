@@ -4,11 +4,10 @@ import MainSection from './components/mainSection';
 import Trending from './components/trending';
 import Posts from './components/posts';
 import { useState } from 'react';
-import { Route, Routes } from "react-router-dom"
+import { Route, Routes } from "react-router-dom";
 import Login from './components/subComponents/logIn';
 import Admin from './components/subComponents/admin';
 
-const navbar = ["Our story", "Membership", "Write", "Sign in", "Get started"];
 const trendingNews = [
   {
     id: "01",
@@ -202,19 +201,65 @@ const posts = [
     read: "3 min read",
     createdUser: { Name: "Chasten Buttigieg", userId: "11", img: require('../src/images/11small.jpeg.png') }
   },
-]
+];
+
+const users = [
+  { user: "duk", pass: "duk" }
+];
 
 function App() {
+  const [admin, setAdmin] = useState(false);
+  const [user, setUser] = useState();
+  const [showModal, setShowModal] = useState(false)
 
-  const [admin, setAdmin] = useState(false)
+  const [background, setBackground] = useState(user ? "white" : "#ffc017");
+  const navbarStyle = { background: background }
+
+  const handleScroll = (event) => {
+    if (user) {
+      setBackground("white")
+    }
+    else {
+      setBackground("#ffc017")
+    }
+  }
+
+  const openModal = () => {
+    setShowModal(!showModal);
+  };
+
+  const onLogin = (username, password) => {
+    users.map((userObj) => {
+      if (userObj.user == username && userObj.pass == password) {
+        setShowModal(false);
+        setUser(userObj);
+        return "successfully logged in"
+      }
+    })
+  }
   return (
     <div>
       {!admin ? (
-        <div>
-          < Navbar navbar={navbar} setAdmin={setAdmin} />
-          <MainSection />
+        <div onScroll={handleScroll}>
+          <Navbar
+            style={navbarStyle}
+            onLogin={onLogin}
+            setAdmin={setAdmin}
+            user={user}
+            setUser={setUser}
+            showModal={showModal}
+            openModal={openModal} />
+          <div>
+            <Routes>
+              <Route path='/' element={
+                <div>
+                  {!user && <MainSection />}
+                </div>
+              } />
+            </Routes>
+          </div>
           <Trending trending={trendingNews} />
-          <Posts posts={posts} />}
+          <Posts posts={posts} />
         </div>
       ) : (
         <div>
