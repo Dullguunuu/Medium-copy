@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Barchart } from "../subComponents/Barchart"
+import MediumUser from "./MediumUser";
 
 export default function Admin() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [totalUser, setTotalUser] = useState(false)
 
     useEffect(() => {
         fetch("https://medium-api-psi.vercel.app/api/news")
@@ -19,6 +21,11 @@ export default function Admin() {
 
     if (loading) return "Loading"
     if (error) return "Error"
+
+    function mediumUser() {
+        setTotalUser(!totalUser)
+    }
+
     return (
         <div>
             <div className="navbar bg-dark flex-nowrap">
@@ -40,9 +47,9 @@ export default function Admin() {
                                 <a className="nav-link">Dashboard</a>
                             </div>
                             <div className="nav-item">
-                                <a className="nav-link">News</a>
+                                <a className="nav-link" >News</a>
                             </div>
-                            <div className="nav-item">
+                            <div className="nav-item" onClick={mediumUser}>
                                 <a className="nav-link">Users</a>
                             </div>
                         </div>
@@ -112,5 +119,10 @@ export default function Admin() {
                     </div>
                 </div>
             </div>
+            <MediumUser
+                totalUser={totalUser}
+                setTotalUser={setTotalUser}
+                mediumUser={mediumUser}
+            />
         </div >)
 }
